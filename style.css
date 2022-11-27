@@ -1,0 +1,246 @@
+ /* 
+  ===================
+    Table of contents: 
+      1- global style 
+      2- layout
+      3- components
+      4- media queries
+  ====================
+  
+  *****************
+  1- global style
+  *****************
+  */
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&display=swap');
+:root {
+    --very-dark-magenta:hsl(300, 43%, 22%);
+    --soft-pink:hsl(333, 80%, 67%);
+    --dark-grayish-magenta:hsl(303, 10%, 53%);
+    --light-grayish-magenta:hsl(300, 24%, 96%);
+    --white:hsl(0, 0%, 100%);
+  }
+ 
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  * {
+    margin: 0;
+  }
+  html, body {
+   min-height: 100vh;
+  }
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  img {
+    display: block; 
+    max-width: 100%;
+  }
+  /* 
+  *****************
+  2- layout
+  *****************
+  */
+  body {
+    display: grid;
+    place-content: center;
+    gap: 1em;
+    padding: 24px;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 0.9rem;
+    background-image: url(images/bg-pattern-top-mobile.svg), 
+                    url(images/bg-pattern-bottom-mobile.svg);
+    background-position: left  top , 
+                        right  bottom ;
+    background-repeat: no-repeat;
+  }
+  header > * {
+    margin-block: 16px;
+  }
+  header,
+  .ratings ul{
+    text-align: center;
+  }
+  .ratings ul{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 0px;
+    list-style-type: none;
+    color: var(--very-dark-magenta);
+  }
+  main {
+    display: grid;
+    gap: 1.5em;
+  }
+ /* 
+  *****************
+  3- components
+    3-1 header
+    3-2 ratings
+    3-3 card
+  ***************** 
+
+  ===================
+        header
+  ===================
+  */
+  .header-title {
+    margin-inline: auto;
+    width: 70%;
+    font-size: clamp(1.86rem, 1.2310rem + 3.1448vw, 3rem);
+    line-height: initial;
+    color: var(--very-dark-magenta);
+    
+  }
+  .header-description {
+    font-size: clamp(0.9rem, 0.6628rem + 1.1862vw, 1.33rem);
+    font-weight: 500;
+    color: var(--dark-grayish-magenta);
+  }
+  .header-title ,
+  .ratings li {
+    font-weight: 700;
+  }
+   /* 
+  ===================
+        ratings
+  ===================
+  */
+  .ratings li {
+    position: relative;
+    padding: 16px;
+    background-color: var(--light-grayish-magenta);
+  }
+ .pos-bg::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    right: 0;
+    width: 151px;
+    height: 25px;
+    margin-inline: auto;
+ }
+ .stars::after {
+    background-image: url(images/icon-star.svg),
+                      url(images/icon-star.svg),
+                      url(images/icon-star.svg),
+                      url(images/icon-star.svg),
+                      url(images/icon-star.svg); 
+    background-repeat: no-repeat;
+    background-position: 113px top, 
+                        right 105px top, 
+                        right 85px top, 
+                        left 92px top, 
+                        left 70px top;
+ }
+ /* 
+  ===================
+        card 
+  ===================
+*/
+  .card {
+    padding: 2em;
+    border-radius: 5px;
+    background-color: var(--very-dark-magenta);
+  }
+  .card-header {
+    display: flex;
+    gap: 20px;
+  }
+  .card-header h2,
+  .card-description {
+    color: var(--white);
+  }
+  .card-header h2 {
+    font-size: 1rem;
+  }
+  .card-header span {
+    color: var(--soft-pink);
+  }
+  .card-header img {
+    align-self: center;
+    width: 40px;
+    border-radius: 50%;
+  }
+  .card-description {
+    margin-top: 16px;
+  }
+  /* 
+  ===================
+  4-  media queries
+  ===================
+  */
+  @media only screen and (min-width: 600px)  {
+    body {
+      grid-template-areas: "header ratings"
+                            "cards cards";
+      grid-template-columns: repeat(2,minmax(250px,500px));   
+    }
+    header {
+      grid-area: header;
+    }
+    .header-title {
+      margin-inline: initial;
+    }
+    .ratings {
+      grid-area: ratings;
+    }
+    main {
+      grid-area: cards;
+      grid-template-columns: repeat(2,1fr);
+    }
+    .card:last-child{
+      grid-column: span 2;
+    }
+    header {
+      text-align: initial;
+    }
+
+    }
+  
+  @media only screen and (min-width: 900px)  {  
+    .ratings li {
+      width: 64%;
+    }
+    .ratings li:nth-child(2) {
+      align-self: center;
+    }
+    .ratings li:last-child {
+      align-self: flex-end;
+    }
+    main {
+      align-self: center;
+      grid-template-columns: repeat(3,1fr);
+      grid-template-rows: 10px 10px 1fr;
+      grid-template-areas: "col-1 . ."
+                            "col-1 col-2 ." 
+                            "col-1 col-2 col-3"
+                            ".     col-2 col-3"
+                            ".        .    col-3"  ;
+      
+    }
+   .card:first-child {
+    grid-area:col-1;  
+    }
+    .card:nth-child(2){
+      grid-area:col-2;
+      
+    }
+    .card:last-child {
+      grid-area:col-3;
+      
+    } 
+  }
+  @media only screen and (min-width: 1200px)  { 
+    .ratings li {
+      text-align: end;
+    }
+    .pos-bg::after {
+      left: -15px;
+      top: 16px;
+      margin-inline: initial;
+    }
+  } 
