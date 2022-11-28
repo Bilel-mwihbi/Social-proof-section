@@ -110,7 +110,8 @@
   */
   .ratings li {
     position: relative;
-    padding: 16px;
+    border-radius: 10px;
+    padding-block: 16px;
     background-color: var(--light-grayish-magenta);
   }
  .pos-bg::after {
@@ -155,6 +156,7 @@
     color: var(--white);
   }
   .card-header h2 {
+    max-width: 130px;
     font-size: 1rem;
   }
   .card-header span {
@@ -235,6 +237,9 @@
     } 
   }
   @media only screen and (min-width: 1200px)  { 
+    body {
+      font-size: 1rem;
+    }
     .ratings li {
       text-align: end;
     }
