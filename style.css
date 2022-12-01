@@ -1,4 +1,4 @@
- /* 
+/* 
   ===================
     Table of contents: 
       1- global style 
@@ -18,34 +18,32 @@
     --dark-grayish-magenta:hsl(303, 10%, 53%);
     --light-grayish-magenta:hsl(300, 24%, 96%);
     --white:hsl(0, 0%, 100%);
-  }
- 
-  *, *::before, *::after {
+}
+*, *::before, *::after {
     box-sizing: border-box;
-  }
-  * {
+}
+* {
     margin: 0;
-  }
-  html, body {
-   min-height: 100vh;
-  }
-  body {
+}
+html, body {
+    min-height: 100vh;
+}
+body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-  }
-  img {
+}
+img {
     display: block; 
     max-width: 100%;
-  }
-  /* 
+}
+/* 
   *****************
   2- layout
   *****************
   */
-  body {
+body {
     display: grid;
     place-content: center;
-    gap: 1em;
     padding: 24px;
     font-family: 'League Spartan', sans-serif;
     font-size: 0.9rem;
@@ -54,67 +52,83 @@
     background-position: left  top , 
                         right  bottom ;
     background-repeat: no-repeat;
-  }
-  header > * {
-    margin-block: 16px;
-  }
-  header,
-  .ratings ul{
-    text-align: center;
-  }
-  .ratings ul{
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    padding: 0px;
-    list-style-type: none;
-    color: var(--very-dark-magenta);
-  }
-  main {
+}
+main {
     display: grid;
+    grid-template-areas: "header"
+                          "ratings"
+                          "cards";
+    gap: 1rem;
+}
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
     gap: 1.5em;
-  }
- /* 
+}
+/* 
   *****************
   3- components
     3-1 header
     3-2 ratings
-    3-3 card
+    3-3 cards
   ***************** 
 
   ===================
         header
   ===================
   */
-  .header-title {
+  
+.header {
+    grid-area: header;
+}
+.header > * {
+    margin-block: 16px;
+}
+.header-title {
+    max-width: 15ch;
+    line-height: 1.1;
+    color: var(--very-dark-magenta);    
+}
+.header-title,
+.header-description {
     margin-inline: auto;
-    width: 70%;
-    font-size: clamp(1.86rem, 1.2310rem + 3.1448vw, 3rem);
-    line-height: initial;
-    color: var(--very-dark-magenta);
-    
-  }
-  .header-description {
-    font-size: clamp(0.9rem, 0.6628rem + 1.1862vw, 1.33rem);
+}
+.header-description {
+    max-width: 44ch;
     font-weight: 500;
     color: var(--dark-grayish-magenta);
-  }
-  .header-title ,
-  .ratings li {
+}
+.header-title ,
+.ratings li {
     font-weight: 700;
-  }
+}
    /* 
   ===================
         ratings
   ===================
   */
-  .ratings li {
+.ratings {
+    grid-area: ratings;
+}
+.ratings ul{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 0px;
+    list-style-type: none;
+    color: var(--very-dark-magenta);
+}
+.header,
+.ratings ul{
+    text-align: center;
+}
+.ratings li {
     position: relative;
     border-radius: 10px;
     padding-block: 16px;
     background-color: var(--light-grayish-magenta);
-  }
- .pos-bg::after {
+}
+.pos-bg::after {
     position: absolute;
     content: "";
     left: 0;
@@ -123,8 +137,8 @@
     width: 151px;
     height: 25px;
     margin-inline: auto;
- }
- .stars::after {
+}
+.stars::after {
     background-image: url(images/icon-star.svg),
                       url(images/icon-star.svg),
                       url(images/icon-star.svg),
@@ -136,110 +150,96 @@
                         right 85px top, 
                         left 92px top, 
                         left 70px top;
- }
- /* 
-  ===================
-        card 
-  ===================
-*/
-  .card {
-    padding: 2em;
+}
+  /* 
+  =======================
+        cards componenet
+  ========================
+ */
+.cards {
+    grid-area: cards;
+}
+.card {
+    padding: 1.5em;
     border-radius: 5px;
     background-color: var(--very-dark-magenta);
-  }
-  .card-header {
+}
+.card-header {
     display: flex;
     gap: 20px;
-  }
-  .card-header h2,
-  .card-description {
+}
+.card-header h2,
+.card-description {
     color: var(--white);
-  }
-  .card-header h2 {
-    max-width: 130px;
+}
+.card-header h2 {
+    max-width: 15ch;
     font-size: 1rem;
-  }
-  .card-header span {
+}
+.card-header span {
     color: var(--soft-pink);
-  }
-  .card-header img {
+}
+.card-header img {
     align-self: center;
     width: 40px;
     border-radius: 50%;
-  }
-  .card-description {
+}
+.card-description {
     margin-top: 16px;
-  }
-  /* 
-  ===================
-  4-  media queries
-  ===================
-  */
-  @media only screen and (min-width: 600px)  {
-    body {
-      grid-template-areas: "header ratings"
-                            "cards cards";
-      grid-template-columns: repeat(2,minmax(250px,500px));   
+}
+
+@media only screen and (min-width: 600px)  {
+    main {
+        grid-template-areas: "header ratings"
+                              "cards cards";
+        grid-template-columns: 1fr 1fr;                      
     }
-    header {
-      grid-area: header;
+    .header {
+        text-align: initial;
     }
     .header-title {
-      margin-inline: initial;
+        font-size: 2.2rem;
+      }
+    .header-title,
+    .header-description {
+        margin-inline: initial;
     }
     .ratings {
-      grid-area: ratings;
-    }
+        align-self: center;
+    } 
+}
+@media only screen and (min-width: 900px)  {  
     main {
-      grid-area: cards;
-      grid-template-columns: repeat(2,1fr);
+        max-width: 66rem;
     }
-    .card:last-child{
-      grid-column: span 2;
-    }
-    header {
-      text-align: initial;
-    }
-
-    }
-  
-  @media only screen and (min-width: 900px)  {  
     .ratings li {
-      width: 64%;
-    }
+        width: 64%;
+      }
     .ratings li:nth-child(2) {
-      align-self: center;
+        align-self: center;
     }
     .ratings li:last-child {
-      align-self: flex-end;
+        align-self: flex-end;
     }
-    main {
-      align-self: center;
-      grid-template-columns: repeat(3,1fr);
-      grid-template-rows: 10px 10px 1fr;
-      grid-template-areas: "col-1 . ."
+    .cards {
+        grid-template-rows: 10px 10px 1fr;
+        grid-template-areas: "col-1 . ."
                             "col-1 col-2 ." 
                             "col-1 col-2 col-3"
                             ".     col-2 col-3"
                             ".        .    col-3"  ;
-      
     }
-   .card:first-child {
-    grid-area:col-1;  
+    .card:first-child {
+         grid-area:col-1;  
     }
     .card:nth-child(2){
-      grid-area:col-2;
-      
+        grid-area:col-2;
     }
     .card:last-child {
-      grid-area:col-3;
-      
-    } 
-  }
-  @media only screen and (min-width: 1200px)  { 
-    body {
-      font-size: 1rem;
-    }
+        grid-area:col-3;      
+    }  
+}
+@media only screen and (min-width: 1200px)  { 
     .ratings li {
       text-align: end;
     }
@@ -248,4 +248,4 @@
       top: 16px;
       margin-inline: initial;
     }
-  } 
+  }

@@ -3,73 +3,67 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
     <title>Frontend Mentor | Social proof section</title>
   </head>
   <body>
-    <header>
-      <h1 class="header-title">10,000+ of our users love our products.</h1>
-      <div class="header-description">
-        <p>We only provide great products combined with excellent customer service.
-          See what our satisfied customers are saying about our services.</p>
-      </div>
-    </header>
-    <aside class="ratings">
-      <ul>
-        <li class="stars pos-bg">Rated 5 Stars in Reviews</li>
-        <li class="stars pos-bg">Rated 5 Stars in Report Guru</li>
-        <li class="stars pos-bg">Rated 5 Stars in BestTech</li>
-      </ul>
-    </aside>
     <main>
-      <article class="card">
-        <div class="card-header">
-        <img src="images/image-colton.jpg" alt="Colton Smith" >
-        <h2>Colton Smith <span>Verified Buyer</span></h2>
+        <!-- header component -->
+        <div class="header">
+          <h1 class="header-title">10,000+ of our users love our products.</h1>
+          <p class="header-description">We only provide great products combined with excellent customer service.
+            See what our satisfied customers are saying about our services.
+          </p>
         </div>
-        <div class="card-description">
-          <blockquote>
-            <p> 
+        <!-- ratings component -->
+        <div class="ratings">
+          <ul role="list">
+            <li class="stars pos-bg" role="listitem">Rated 5 Stars in Reviews</li>
+            <li class="stars pos-bg" role="listitem">Rated 5 Stars in Report Guru</li>
+            <li class="stars pos-bg" role="listitem">Rated 5 Stars in BestTech</li>
+          </ul>
+        </div>
+        <!-- cards components -->
+        <div class="cards">
+          <figure class="card">
+            <figcaption class="card-header">
+              <img src="images/image-colton.jpg" alt="Colton Smith" >
+              <h2>Colton Smith <span>Verified Buyer</span></h2>
+            </figcaption>
+            <blockquote class="card-description">
               <q> We needed the same printed design as the one we had ordered a week prior.
-              Not only did they find the original order, but we also received it in time.
-              Excellent!
-              </q>
-            </p>
-          </blockquote>
+                Not only did they find the original order, but we also received it in time.
+                Excellent!
+                </q>
+            </blockquote>
+          </figure>
+          <figure class="card">
+            <figcaption class="card-header">
+              <img src="images/image-irene.jpg" alt="Irene Roberts" >
+              <h2>Irene Roberts <span>Verified Buyer</span></h2>
+            </figcaption>
+            <blockquote class="card-description">
+                <q> Customer service is always excellent and very quick turn around. Completely
+                  delighted with the simplicity of the purchase and the speed of delivery.
+                </q>
+            </blockquote>
+          </figure>
+          <figure class="card">
+            <figcaption class="card-header">
+              <img src="images/image-anne.jpg" alt="Anne Wallace" >
+            <h2> Anne Wallace <span>Verified Buyer</span></h2>
+            </figcaption>
+            <blockquote class="card-description">
+                <q>
+                  Put an order with this company and can only praise them for the very high
+                standard. Will definitely use them again and recommend them to everyone!
+                </q>
+            </blockquote>
+          </figure>
         </div>
-      </article>
-      <article class="card">
-        <div class="card-header">
-        <img src="images/image-irene.jpg" alt="Irene Roberts" >
-        <h2>Irene Roberts <span>Verified Buyer</span></h2>
-        </div>
-        <div class="card-description">
-          <blockquote>
-            <p>
-              <q> Customer service is always excellent and very quick turn around. Completely
-                delighted with the simplicity of the purchase and the speed of delivery.
-              </q>
-            </p>
-          </blockquote>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-header">
-        <img src="images/image-anne.jpg" alt="Anne Wallace" >
-        <h2> Anne Wallace <span>Verified Buyer</span></h2>
-        </div>
-        <div class="card-description">
-          <blockquote>
-            <p>
-              <q>
-                Put an order with this company and can only praise them for the very high
-              standard. Will definitely use them again and recommend them to everyone!
-              </q>
-            </p>
-          </blockquote>
-        </div>
-      </article>
+    </main>
     </main>
   </body>
 </html>
