@@ -58,7 +58,7 @@ main {
     grid-template-areas: "header"
                           "ratings"
                           "cards";
-    gap: 1rem;
+    gap: 1em;
 }
 .cards {
     display: grid;
@@ -82,6 +82,11 @@ main {
     grid-area: header;
 }
 .header > * {
+    /*
+        margin-block fallback 
+     */ 
+    margin-top: 16px;
+    margin-bottom: 16px;
     margin-block: 16px;
 }
 .header-title {
@@ -91,6 +96,11 @@ main {
 }
 .header-title,
 .header-description {
+    /*
+        margin-inline fallback 
+     */ 
+    margin-left: auto;
+    margin-right: auto;
     margin-inline: auto;
 }
 .header-description {
@@ -124,7 +134,12 @@ main {
 }
 .ratings li {
     position: relative;
-    border-radius: 10px;
+    border-radius: 10px; 
+    /*
+        padding-block fallback 
+     */ 
+    padding-top: 16px;   
+    padding-bottom: 16px;
     padding-block: 16px;
     background-color: var(--light-grayish-magenta);
 }
@@ -136,6 +151,11 @@ main {
     right: 0;
     width: 151px;
     height: 25px;
+    /*
+        margin-inline fallback 
+     */ 
+    margin-right: auto;
+    margin-left: auto;
     margin-inline: auto;
 }
 .stars::after {
@@ -160,13 +180,13 @@ main {
     grid-area: cards;
 }
 .card {
-    padding: 1.5em;
+    padding: 20px;
     border-radius: 5px;
     background-color: var(--very-dark-magenta);
 }
 .card-header {
     display: flex;
-    gap: 20px;
+    gap: 1.5em;
 }
 .card-header h2,
 .card-description {
@@ -202,7 +222,7 @@ main {
       }
     .header-title,
     .header-description {
-        margin-inline: initial;
+        margin-left: initial;
     }
     .ratings {
         align-self: center;
@@ -246,6 +266,6 @@ main {
     .pos-bg::after {
       left: -15px;
       top: 16px;
-      margin-inline: initial;
+      margin-left: initial;
     }
   }
